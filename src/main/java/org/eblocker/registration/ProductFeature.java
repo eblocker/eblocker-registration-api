@@ -34,8 +34,6 @@ public enum ProductFeature {
 
     FMX, // extended validity for Family products
 
-    EXP, // extended expert features
-
     EVL_BAS, // evaluation license for eBlocker Base
 
     EVL_PRO, // evaluation license for eBlocker Base

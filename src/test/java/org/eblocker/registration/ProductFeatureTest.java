@@ -32,7 +32,6 @@ public class ProductFeatureTest {
         assertEquals(ProductFeature.FAM, ProductFeature.getFailSafeValue("FAM"));
         assertEquals(ProductFeature.LFT, ProductFeature.getFailSafeValue("LFT"));
         assertEquals(ProductFeature.FMX, ProductFeature.getFailSafeValue("FMX"));
-        assertEquals(ProductFeature.EXP, ProductFeature.getFailSafeValue("EXP"));
 
         assertEquals(ProductFeature.BAS, ProductFeature.getFailSafeValue("bas"));
         assertEquals(ProductFeature.WOL, ProductFeature.getFailSafeValue(""));
