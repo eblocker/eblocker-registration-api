@@ -30,6 +30,8 @@ public enum ProductFeature {
 
     LFT, // lifetime validity
 
+    AUP, // automatic updates
+
     EVL, // evaluation license
 
     FMX, // extended validity for Family products
