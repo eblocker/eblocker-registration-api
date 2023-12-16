@@ -41,4 +41,11 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>eblocker-registration-api</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/${githubRepository}</url>
+        </repository>
+    </distributionManagement>
 </project>
