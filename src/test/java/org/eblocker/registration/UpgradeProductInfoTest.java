@@ -17,21 +17,20 @@
 package org.eblocker.registration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UpgradeProductInfoTest {
+class UpgradeProductInfoTest {
 
     private static ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
         UpgradeProductInfo entity = new UpgradeProductInfo(
                 true,
                 null

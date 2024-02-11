@@ -16,14 +16,14 @@
  */
 package org.eblocker.registration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class LicenseTypeTest {
+class LicenseTypeTest {
 
     @Test
-    public void test() {
+    void test() {
 
         assertFalse(LicenseType.COMMUNITY.isSubscription());
         assertTrue(LicenseType.SUBSCRIPTION.isSubscription());

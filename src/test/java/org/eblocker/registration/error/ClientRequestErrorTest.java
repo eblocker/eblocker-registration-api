@@ -17,7 +17,8 @@
 package org.eblocker.registration.error;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -27,11 +28,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ClientRequestErrorTest {
+class ClientRequestErrorTest {
 
-    private static ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     private static final Integer STATUS = 400;
     private static final String ERROR = "Bad Request";
@@ -39,7 +40,7 @@ public class ClientRequestErrorTest {
     private static final Long TIMESTAMP = new Date().getTime();
     private static final List<String> PARAMS = Arrays.asList(new String[]{"foo", "bar"});
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
         ClientRequestError error = new ClientRequestError(
                 STATUS,
                 ERROR,
@@ -65,7 +66,7 @@ public class ClientRequestErrorTest {
     }
 
     @Test
-    public void test2() throws IOException {
+    void test2() throws IOException {
         String json = "{\n" +
                 "  \"status\" : "+STATUS+",\n" +
                 "  \"error\" : \""+ERROR+"\",\n" +
@@ -85,7 +86,7 @@ public class ClientRequestErrorTest {
     }
 
     @Test
-    public void test3() throws IOException {
+    void test3() throws IOException {
         String json = "{\n" +
                 //"  \"status\" : "+STATUS+",\n" +
                 //"  \"error\" : \""+ERROR+"\",\n" +
@@ -97,15 +98,15 @@ public class ClientRequestErrorTest {
         ClientRequestError reloaded = mapper.readValue(json, ClientRequestError.class);
 
         assertEquals(Integer.valueOf(0), reloaded.getStatus());
-        assertNull(reloaded.getError());
+        Assertions.assertNull(reloaded.getError());
         assertEquals(MESSAGE, reloaded.getMessage());
-        assertNull(reloaded.getTimestamp());
+        Assertions.assertNull(reloaded.getTimestamp());
         assertEquals(PARAMS, reloaded.getParams());
 
     }
 
     @Test
-    public void test4() throws IOException {
+    void test4() throws IOException {
         String json = "{\n" +
                 "  \"status\" : "+STATUS+",\n" +
                 "  \"error\" : \""+ERROR+"\",\n" +
@@ -124,6 +125,4 @@ public class ClientRequestErrorTest {
         assertEquals(PARAMS, reloaded.getParams());
 
     }
-
-
 }

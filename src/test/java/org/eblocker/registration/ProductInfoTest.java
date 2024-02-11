@@ -17,24 +17,21 @@
 package org.eblocker.registration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ProductInfoTest {
+class ProductInfoTest {
     private static ObjectMapper mapper = new ObjectMapper();
     private ProductInfo entity;
 
-    @Before
+    @BeforeEach
     public void initFixtures() {
         entity = new ProductInfo(
                 "productId",
@@ -44,7 +41,7 @@ public class ProductInfoTest {
     }
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         entity = new ProductInfo(
                 "productId",
                 "productName",
@@ -53,7 +50,7 @@ public class ProductInfoTest {
     }
 
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         mapper.writerWithDefaultPrettyPrinter().writeValue(out, entity);
 
@@ -68,30 +65,30 @@ public class ProductInfoTest {
     }
 
     @Test
-    public void testToString() {
-        assertTrue(entity.toString().contains("productId"));
+    void testToString() {
+        Assertions.assertTrue(entity.toString().contains("productId"));
     }
 
     @Test
-    public void testRemoveProductFeature() {
+    void testRemoveProductFeature() {
         entity.removeProductFeature("F01");
         entity.removeProductFeature("XYZ");
-        assertTrue(entity.getProductFeatures().length == 2);
+        assertEquals(2, entity.getProductFeatures().length);
     }
 
     @SuppressWarnings("unlikely-arg-type")
     @Test
-    public void testEquals() {
-        assertFalse(entity.equals(null));
-        assertFalse(entity.equals("test"));
-        assertTrue(entity.equals(entity));
+    void testEquals() {
+        assertNotEquals(null, entity);
+        assertNotEquals("test", entity);
+        assertEquals(entity, entity);
 
         ProductInfo entity2 = new ProductInfo(
                 "productId",
                 "productName",
                 new String[]{"F01", "F02", "F03"}
         );
-        assertTrue(entity2.equals(entity));
+        assertEquals(entity2, entity);
 
         entity2 = new ProductInfo(
                 null,
@@ -103,8 +100,8 @@ public class ProductInfoTest {
                 "productName",
                 new String[]{"F01", "F02", "F03"}
         );
-        assertFalse(entity2.equals(entity));
-        assertTrue(entity3.equals(entity2));
+        assertNotEquals(entity2, entity);
+        assertEquals(entity3, entity2);
 
         entity2 = new ProductInfo(
                 "productId",
@@ -116,29 +113,29 @@ public class ProductInfoTest {
                 null,
                 new String[]{"F01", "F02", "F03"}
         );
-        assertFalse(entity2.equals(entity));
-        assertTrue(entity3.equals(entity2));
+        assertNotEquals(entity2, entity);
+        assertEquals(entity3, entity2);
 
         entity2 = new ProductInfo(
                 "productId-XZ",
                 "productName",
                 new String[]{"F01", "F02", "F03"}
         );
-        assertFalse(entity2.equals(entity));
+        assertNotEquals(entity2, entity);
 
         entity2 = new ProductInfo(
                 "productId",
                 "productName-XZ",
                 new String[]{"F01", "F02", "F03"}
         );
-        assertFalse(entity2.equals(entity));
+        assertNotEquals(entity2, entity);
 
         entity.removeProductFeature("F01");
-        assertFalse(entity2.equals(entity));
+        assertNotEquals(entity2, entity);
     }
 
     @Test
-    public void testHashCode () {
+    void testHashCode() {
         assertEquals(1526013430, entity.hashCode());
 
         entity = new ProductInfo(

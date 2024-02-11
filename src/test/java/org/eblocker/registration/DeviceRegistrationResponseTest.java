@@ -17,20 +17,21 @@
 package org.eblocker.registration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DeviceRegistrationResponseTest {
+class DeviceRegistrationResponseTest {
 
     private static ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
         DeviceRegistrationResponse response = new DeviceRegistrationResponse(
                 "email@address",
                 "deviceName",
@@ -65,7 +66,7 @@ public class DeviceRegistrationResponseTest {
     }
 
     @Test
-    public void test_compatibility() throws IOException {
+    void test_compatibility() throws IOException {
         DeviceRegistrationResponse response = new DeviceRegistrationResponse(
                 "email@address",
                 "deviceName",
