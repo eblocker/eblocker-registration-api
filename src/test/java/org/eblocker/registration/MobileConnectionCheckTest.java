@@ -17,19 +17,20 @@
 package org.eblocker.registration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MobileConnectionCheckTest {
+class MobileConnectionCheckTest {
     private static ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
         MobileConnectionCheck mobileConnectionCheck = new MobileConnectionCheck(
                 UUID.randomUUID().toString(),
                 MobileConnectionCheck.State.NEW,

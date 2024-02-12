@@ -16,14 +16,14 @@
  */
 package org.eblocker.registration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UpdateModeTest {
+class UpdateModeTest {
 
     @Test
-    public void test() {
+    void test() {
 
         assertEquals(UpdateMode.AUTO, UpdateMode.getFailSafeValue(1));
 
